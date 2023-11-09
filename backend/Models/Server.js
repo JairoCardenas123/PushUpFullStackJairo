@@ -2,6 +2,9 @@
 const express = require("express");
 const cors = require("cors");
 const routeClientes = require('../routes/clientes.routes.js')
+const routeEmpleados = require('../routes/empleados.routes.js')
+const routeProductos = require('../routes/productos.routes.js')
+const routeUsuarios = require('../routes/usuarios.routes.js')
 
 class Server{
 
@@ -9,6 +12,9 @@ class Server{
     constructor(){
         this.app = express();
         this.clientePath = "/api/clientes"
+        this.empleadoPath = "/api/empleados"
+        this.productoPath = "/api/productos"
+        this.usuarioPath = "/api/usuarios"
         
         this.port = process.env.PORT;
         // ! Middleware
@@ -34,6 +40,9 @@ class Server{
 
     routes(){
         this.app.use(this.clientePath,routeClientes)
+        this.app.use(this.empleadoPath,routeEmpleados)
+        this.app.use(this.productoPath,routeProductos)
+        this.app.use(this.usuarioPath,routeUsuarios)
 
     }
 
